@@ -10,4 +10,8 @@ class OptionsValues extends Model
 	protected $fillable = ['descricao', 'preco', 'ativo', 'destaque'];
 
 	public $timestamps = false;
+
+	public function image() {
+		return $this->hasOne('App\Models\Images', 'id', 'imagens_id');
+	}
 }

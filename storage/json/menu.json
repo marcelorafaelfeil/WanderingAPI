@@ -1,0 +1,131 @@
+{
+	"topo": [
+		{
+			"id": 1,
+			"titulo": "Produtos",
+			"url": "/produtos",
+			"chave": "produtos",
+			"menu": [
+				{
+					"id": 16,
+					"titulo": "Quadrados",
+					"url": "/produto/quadrados"
+				},
+				{
+					"id": 17,
+					"titulo": "Tirinhas",
+					"url": "/produto/tirinhas"
+				},
+				{
+					"id": 18,
+					"titulo": "Mini Quadrados",
+					"url": "/produto/mini-quadrado"
+				},
+				{
+					"id": 19,
+					"titulo": "Clássicos",
+					"url": "/produto/classicos"
+				},
+				{
+					"id": 20,
+					"titulo": "Polaroid",
+					"url": "/produto/polaroid"
+				},
+				{
+					"id":  21,
+					"titulo": "Tirinhas Grande",
+					"url": "/produto/tirinhas-grande"
+				}
+			]
+		},
+		{
+			"id": 2,
+			"titulo": "Sobre Nós",
+			"url": "/sobre-nos",
+			"chave": "sobrenos"
+		},
+		{
+			"id": 3,
+			"titulo": "Minha Conta",
+			"url": "/minha-conta",
+			"chave": "account",
+			"menu": [
+				{
+					"id": 22,
+					"titulo": "Meus Sonhos",
+					"url": "/my-dreams"
+				},
+				{
+					"id": 23,
+					"titulo": "Minhas Compras",
+					"url": "/account/my-orders"
+				}
+			]
+		}
+	],
+	"rodape": [
+		{
+			"id": 4,
+			"titulo": "Minha conta",
+			"menu": [
+				{
+					"id": 5,
+					"titulo": "Meus Sonhos",
+					"url": "/meus-sonhos"
+				},
+				{
+					"id": 6,
+					"titulo": "Minhas Compras",
+					"url": "/account/my-orders"
+				}
+			]
+		},
+		{
+			"id": 7,
+			"titulo": "Ajuda e FAQ",
+			"menu": [
+				{
+					"id": 8,
+					"titulo": "Formas de pagamento",
+					"url": "/faq/formas-de-pagamento.html"
+				},
+				{
+					"id": 9,
+					"titulo": "Politica de troca e desistência",
+					"url": "/faq/politica-de-troca-e-desistencia.html"
+				},
+				{
+					"id": 10,
+					"titulo": "Perguntas frequentes",
+					"url": "/faq/perguntas-frequentes.html"
+				},
+				{
+					"id": 11,
+					"titulo": "Central de atendimento",
+					"url": "/faq/central-de-atendimento.html"
+				}
+			]
+		},
+		{
+			"id": 12,
+			"titulo": "Wandering",
+			"menu": [
+				{
+					"id": 13,
+					"titulo": "Quem somos?",
+					"url": "/wendering/quem-somos.html"
+				},
+				{
+					"id": 14,
+					"titulo": "Nossas politicas de privacidade",
+					"url": "/wendering/nossas-politicas de privacidade.html"
+				},
+				{
+					"id": 15,
+					"titulo": "Nossos processos de segurança",
+					"url": "/wendering/nossos-processos-de-seguranca.html"
+				}
+			]
+		}
+	]
+}

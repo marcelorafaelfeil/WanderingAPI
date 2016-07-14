@@ -10,7 +10,7 @@ class Products extends Model
 	protected $fillable = ['nome','url','detalhes', 'resumo', 'quantidade', 'multiplo', 'destaque', 'preco', 'estilos_id', 'ativo'];
 	public $timestamps = false;
 
-	public function estilo() {
+	public function style() {
 		return $this->hasOne('App\Models\Products\Styles', 'id');
 	}
 
@@ -19,6 +19,10 @@ class Products extends Model
 	}
 
 	public function options() {
-		return $this->belongsToMany('App\models\Products\Options', 'produtos_has_opcoes', 'produtos_id', 'opcoes_id');
+		return $this->hasMany('App\models\Products\Options', 'produtos_id', 'id');
+	}
+
+	public function banners() {
+		return $this->belongsToMany('App\Models\Banners\Banners', 'produtos_has_banners', 'produtos_id', 'banners_id');
 	}
 }

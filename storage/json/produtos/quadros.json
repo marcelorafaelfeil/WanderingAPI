@@ -1,0 +1,39 @@
+{
+	"id": "01",
+	"titulo": "Quadrados",
+	"resumo": "Curabitur vel pharetra ligula, ac tinciduntlorem. Donec Ásit amet efficitur magna. Morbi in diam at purus tempus Maximus quis id enim. Proin convallis massa mi.",
+	"descricao_pequena":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mi est, ultrices eu condimentum sit amet, sollicitudin quis augue. Donec a fermentum ipsum. Suspendisse feugiat blandit ipsum nec auctor. Aliquam eu malesuada nibh. Etiam risus massa, pharetra eu ex vel, facilisis malesuada felis. Curabitur maximus diam sit amet odio blandit ultricies. Nam et eros ultricies, varius lacus at, laoreet dui. Cras elit tellus, mattis nec nisl vel, molestie ornare massa.",
+	"precos": {
+		"decimal": "40",
+		"unitario": "00",
+		"inteiro": "40,00"
+	},
+	"opcoes": true,
+	"stilo": {
+		"chave": "squares"
+	},
+	"banners": [
+		{
+			"id": "01",
+			"imagem": "/assets/images/produtos/quadrados/bg01.jpg"
+		}
+	],
+	"imagens": [
+		{
+			"id": "01",
+			"imagem": "/assets/images/produtos/quadrados/img01.jpg"
+		},
+		{
+			"id": "02",
+			"imagem": "/assets/images/produtos/quadrados/img02.jpg"
+		},
+		{
+			"id": "03",
+			"imagem": "/assets/images/produtos/quadrados/img03.jpg"
+		},
+		{
+			"id": "04",
+			"imagem": "/assets/images/produtos/quadrados/img04.jpg"
+		}
+	]
+}

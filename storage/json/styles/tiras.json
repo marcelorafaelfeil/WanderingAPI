@@ -1,0 +1,26 @@
+{
+	"id": 1,
+	"titulo": "Tirinhas",
+	"organiza": true,
+	"qtd": 2,
+	"estilo": "tiras",
+	"produto": {
+		"id": 2,
+		"nome": "Tirinhas",
+		"multiple": false,
+		"qtd": 8,
+		"imagem": "/assets/images/produtos/02.jpg",
+		"link": "/produto/tirinhas",
+		"frete": {
+			"peso": 0.3,
+			"comprimento": 20,
+			"altura": 18,
+			"largura": 15,
+			"valor_declarado": 20.00
+		}
+	},
+	"precos": {
+		"human": "R$20,00",
+		"system": 20.00
+	}
+}

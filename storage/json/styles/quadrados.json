@@ -1,0 +1,44 @@
+{
+	"id": 1,
+	"titulo": "Quadrados",
+	"qtd": 1,
+	"organiza": false,
+	"estilo": "quadrados",
+	"produto": {
+		"id": 1,
+		"nome": "Quadrados",
+		"multiple": true,
+		"qtd": 20,
+		"imagem": "/assets/images/produtos/01.jpg",
+		"link": "/estilo/quadrados/quadros",
+		"frete": {
+			"peso": 0.3,
+			"comprimento": 16,
+			"altura": 16,
+			"largura": 11,
+			"valor_declarado": 20.00
+		}
+	},
+	"opcoes": [
+		{
+			"id": 1,
+			"nome": "4x4\"",
+			"chave": "moldura4x4",
+			"precos": {
+				"human": "R$20,00",
+				"system": 20.00
+			},
+			"image": "/assets/images/styles/square/4x4.png"
+		},
+		{
+			"id": 2,
+			"nome": "5x5\"",
+			"chave": "moldura5x5",
+			"precos": {
+				"human": "R$25,00",
+				"system": 25.00
+			},
+			"image": "/assets/images/styles/square/5x5.png"
+		}
+	]
+}

@@ -1,0 +1,14 @@
+[
+	{
+		"id": 1,
+		"titulo": "Banner de teste",
+		"imagem": "assets/images/banner.jpg",
+		"link": "http://localhost:3000/produtos",
+		"target": "_blank"
+	},
+	{
+		"id": 2,
+		"titulo": "Banner de teste 02",
+		"imagem": "assets/images/banner.jpg"
+	}
+]

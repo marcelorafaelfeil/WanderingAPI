@@ -1,0 +1,123 @@
+{
+	"banners": [
+		{
+			"id": 1,
+			"titulo": "Banner de teste",
+			"imagem": "assets/images/banner.jpg",
+			"link": "http://localhost:3000/produtos",
+			"target": "_blank"
+		},
+		{
+			"id": 2,
+			"titulo": "Banner de teste 02",
+			"imagem": "assets/images/banner.jpg"
+		}
+	],
+	"produtos": [
+		{
+			"id": 1,
+			"nome": "Quadros",
+			"link": "/produto/quadros",
+			"imagem": "assets/images/produtos/01.jpg",
+			"resumo": "lorem ipsum dolor sit amet, consectetur adipscing elit. Proin in dictum elit, non efficitur orci...",
+			"preco": {
+				"decimal": "20",
+				"unitario": "00",
+				"inteiro": "20,00"
+			},
+			"estilo": {
+				"nome": "Quadrados",
+				"icone": "/assets/images/styles/square.png"
+			}
+		},
+		{
+			"id": 2,
+			"nome": "Tirinhas",
+			"link": "/produto/tirinhas",
+			"imagem": "assets/images/produtos/02.jpg",
+			"resumo": "lorem ipsum dolor sit amet, consectetur adipscing elit. Proin in dictum elit, non efficitur orci...",
+			"preco": {
+				"decimal": "40",
+				"unitario": "49",
+				"inteiro": "40,49"
+			},
+			"estilo": {
+				"nome": "Quadrados",
+				"icone": "/assets/images/styles/square.png"
+			}
+		},
+		{
+			"id": 3,
+			"nome": "Mini Quadrados",
+			"link": "/produto/mini-quadrados",
+			"imagem": "assets/images/produtos/03.jpg",
+			"resumo": "lorem ipsum dolor sit amet, consectetur adipscing elit. Proin in dictum elit, non efficitur orci...",
+			"preco": {
+				"decimal": "15",
+				"unitario": "90",
+				"inteiro": "15,90"
+			},
+			"estilo": {
+				"nome": "Quadrados",
+				"icone": "/assets/images/styles/square.png"
+			}
+		},
+		{
+			"id": 4,
+			"nome": "Clássicos",
+			"link": "/produto/classicos",
+			"imagem": "assets/images/produtos/04.jpg",
+			"resumo": "lorem ipsum dolor sit amet, consectetur adipscing elit. Proin in dictum elit, non efficitur orci...",
+			"preco": {
+				"decimal": "25",
+				"unitario": "00",
+				"inteiro": "25,00"
+			},
+			"estilo": {
+				"nome": "Quadrados",
+				"icone": "/assets/images/styles/square.png"
+			}
+		},
+		{
+			"id": 5,
+			"nome": "Tirinhas",
+			"link": "/produto/tirinhas",
+			"imagem": "assets/images/produtos/05.jpg",
+			"resumo": "lorem ipsum dolor sit amet, consectetur adipscing elit. Proin in dictum elit, non efficitur orci...",
+			"preco": {
+				"decimal": "30",
+				"unitario":"00",
+				"inteiro": "30,00"
+			},
+			"estilo": {
+				"nome": "Quadrados",
+				"icone": "/assets/images/styles/square.png"
+			}
+		},
+		{
+			"id": 6,
+			"nome": "Tirinhas Grandes",
+			"link": "/produto/tirinhas-grandes",
+			"imagem": "assets/images/produtos/06.jpg",
+			"resumo": "lorem ipsum dolor sit amet, consectetur adipscing elit. Proin in dictum elit, non efficitur orci...",
+			"preco": {
+				"decimal": "18",
+				"unitario": "00",
+				"inteiro": "18,00"
+			},
+			"estilo": {
+				"nome": "Quadrados",
+				"icone": "/assets/images/styles/square.png"
+			}
+		}
+	],
+	"texto": {
+		"id": 1,
+		"descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam velit ex, condimentum feugiat venenatis consequat, vulputate vel magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam efficitur diam quis rhoncus auctor. Curabitur ut laoreet dui. Aliquam erat volutpat. Nunc bibendum sodales nunc, at aliquet urna vestibulum vel. Mauris facilisis ac dolor ac vulputate. Suspendisse potenti. Duis condimentum erat non semper vulputate."
+	},
+	"sobrenos": {
+		"id": 2,
+		"titulo": "Sobre nós",
+		"descricao": "Proin tincidunt mollis rhoncus. Fusce sed metus vitae nisl efficitur vulputate tristique in mauris. Sed lobortis, leo sit amet cursus tincidunt, lectus urna porta ligula, sit amet elementum velit diam eu nisl. Aenean non feugiat lectus. Aenean suscipit tincidunt est ac varius. Duis vitae tempor mauris. Aliquam erat volutpat. Donec vel sollicitudin nibh. Aenean euismod a ligula nec iaculis. Phasellus feugiat mi nec nisi efficitur, non mattis mi consequat. Cras condimentum mauris sed tincidunt ultricies. Nulla porta nulla mollis pellentesque efficitur. Maecenas vel metus felis. Morbi commodo arcu sed pellentesque condimentum. Proin vel urna a elit fermentum placerat. Aliquam et posuere nulla."
+	}
+}

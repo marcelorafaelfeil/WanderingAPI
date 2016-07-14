@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Options extends Model
 {
     protected $table = 'opcoes';
-	protected $fillable = ['nome', 'ativo', 'destaque'];
+	protected $fillable = ['nome', 'ativo', 'destaque', 'produtos_id'];
 
 	public $timestamps = false;
 
