@@ -14,24 +14,24 @@ class AuthController extends Controller
 		if($token_csrf = csrf_token()) {
 			return \Response::json([
 				'response' => [
-					'status' => 1,
+					'status' => '002',
 					'success' => [
-						'message' => 'Token generate success!'
+						'message' => 'Token successfully generated!'
 					],
 					'data' => [
-						'auth_token' => $token_csrf
+						'token' => $token_csrf
 					]
 				]
 			],200);
 		} else {
 			return \Response::json([
 				'response' => [
-					'status' => 0,
+					'status' => '001',
 					'error' => [
 						'message' => 'Unable to generate token!'
 					]
 				]
-			]);
+			],400);
 		}
 	}
 

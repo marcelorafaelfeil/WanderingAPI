@@ -15,6 +15,10 @@ class Credentials extends Model
 		return $this->hasMany('App\Models\Authentication\Passwords', 'login_id', 'id');
 	}
 
+	public function client() {
+		return $this->hasOne('App\Models\Clients\Clients', 'login_id', 'id');
+	}
+
 	public static function generateJWT($inf) {
 		$header = [
 			'alg' => 'HS256',
@@ -39,5 +43,38 @@ class Credentials extends Model
 		$jwt = $header.'.'.$payload.'.'.$assignature;
 
 		return $jwt;
+	}
+
+	public static function getToken() {
+		$headers = getallheaders();
+		$auth = isset($headers['Authorization']) ? $headers['Authorization'] : '';
+
+		if($auth) {
+			if (preg_match('/\bBearer\b/i', $auth)) {
+				$auth = trim(preg_replace('/\bBearer\b/i', '', $auth));
+				return $auth;
+			}
+		}
+		return false;
+	}
+
+	public static function getJWTPayload() {
+		if($token = self::getToken()) {
+			$t = explode('.', $token);
+			$payload = $t[1];
+
+			if($payload) {
+				$payload = json_decode(base64_decode($payload));
+
+				return $payload;
+			}
+		}
+		return false;
+	}
+
+	public static function getUser() {
+		$payload = self::getJWTPayload();
+
+		return $payload->email;
 	}
 }

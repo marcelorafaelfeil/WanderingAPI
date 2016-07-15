@@ -18,13 +18,24 @@ Route::group(['prefix' => 'api'], function(){
 	Route::get('menu', 'MenuController@menu');
 	Route::get('product/{url}', 'ProductsController@details');
 	Route::get('option/{url}', 'OptionsController@ofProduct');
-	Route::get('orders', function(){
-		return \Response::json([],200);
-	});
 
 	Route::group(['prefix' => 'authentication'], function() {
 		Route::get('', 'Authentication\AuthController@login');
 		Route::post('process', 'Authentication\AuthController@validation');
+	});
+
+	Route::group(['prefix' => 'checkout', 'middleware' => 'jwt'], function() {
+		Route::get('/', 'CheckoutController@index');
+	});
+
+	Route::group(['prefix' => 'correios'], function(){
+		Route::get('shipping', 'ShippingInfoController@ShippingCost');
+		Route::get('address', 'ShippingInfoController@AddressFromZipCode');
+		Route::get('tracking', 'ShippingInfoController@Tracking');
+	});
+
+	Route::group(['prefix' => 'payment'], function(){
+		Route::post('PagSeguro', 'PaymentController@PagSeguro');
 	});
 
 	Route::group(['prefix' => 'account', 'middleware' => 'jwt'], function() {

@@ -24,6 +24,6 @@ class Clients extends Model
 	}
 
 	public function orders() {
-		return $this->hasMany('App\Models\Products\Orders', 'clientes_id', 'id');
+		return $this->hasMany('App\Models\Products\Orders', 'cliente_id', 'id');
 	}
 }
