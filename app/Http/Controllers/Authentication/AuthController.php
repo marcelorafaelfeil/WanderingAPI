@@ -53,19 +53,19 @@ class AuthController extends Controller
 					    if (\Crypt::decrypt($password->first()->senha) == $request->input('pass')) {
 						    return \Response::json([
 							    'response' => [
-								    'status' => 1,
+								    'status' => 305,
 								    'success' => [
 									    'message' => 'Credentials accepted.'
 								    ],
 								    'data' => [
-									    'access_token' => Credentials::generateJWT(['email' => $request->input])
+									    'access_token' => Credentials::generateJWT(['email' => $request->input('email')])
 								    ]
 							    ]
 						    ], 200);
 					    } else {
 						    return \Response::json([
 							    'response' => [
-								    'status' => 0,
+								    'status' => 304,
 								    'error' => [
 									    'message' => 'Invalid password'
 								    ]
@@ -75,7 +75,7 @@ class AuthController extends Controller
 				    } else {
 					    return \Response::json([
 						    'response' => [
-							    'status' => 0,
+							    'status' => 303,
 							    'error' => [
 								    'message' => 'Dont have password related to this user.'
 							    ]
@@ -85,7 +85,7 @@ class AuthController extends Controller
 			    } else {
 				    return \Response::json([
 					    'response' => [
-						    'status' => 0,
+						    'status' => 302,
 						    'error' => [
 							    'message' => 'Invalid credentials.'
 						    ]
@@ -95,7 +95,7 @@ class AuthController extends Controller
 		    } else {
 			    return \Response::json([
 				    'response' => [
-					    'status' => 0,
+					    'status' => 301,
 					    'error' => [
 						    'message' => 'Required credentials.'
 					    ]
@@ -105,7 +105,7 @@ class AuthController extends Controller
 	    } else {
 		    return \Response::json([
 			    'response' => [
-				    'status' => -1,
+				    'status' => 300,
 				    'error' => [
 					    'message' => 'Unauthorized request!'
 				    ]
