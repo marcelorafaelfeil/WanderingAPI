@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Phones extends Model
 {
     protected $table = 'telefones';
-	protected $fillable = ['clientes_id', 'residencial', 'comercial', 'celular', 'principal'];
+	protected $fillable = ['clientes_id', 'ddd', 'telefone', 'principal'];
 
 	public $timestamps = false;
 

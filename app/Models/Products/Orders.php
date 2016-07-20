@@ -3,6 +3,8 @@
 namespace App\Models\Products;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Authentication\Credentials;
+use App\Models\Clients\Clients;
 // use App\Models\Products\Products;
 
 class Orders extends Model
@@ -31,6 +33,9 @@ class Orders extends Model
 	public function setOrders($orders) {
 		if(count($orders) > 0) {
 			$prds=[];
+			$peso=0;
+			$dim=[];
+
 			if ($orders['products']) {
 				foreach ($orders['products'] as $p) {
 					if(empty($p['id'])) throw new \Exception('Has ghost products.',600);
@@ -50,14 +55,32 @@ class Orders extends Model
 
 			foreach($prds as $k => $p) {
 				$db = Products::where('id', $p['id'])
-					-> select(['quantidade', 'multiplo', 'preco'])
+					-> select(['codigo', 'nome', 'quantidade', 'multiplo', 'preco', 'peso', 'diametro', 'comprimento', 'largura', 'altura'])
 					-> get()
 					-> first();
 
 				if($db) {
+					$peso = $db->peso+$peso;
+					$prds[$k]['name'] = $db->nome;
+					$prds[$k]['code'] = $db->codigo;
 					$prds[$k]['limit'] = $db->quantidade;
 					$prds[$k]['multiple'] = $db->multiplo;
+					$prds[$k]['weight'] = $db->peso;
+					$prds[$k]['diameter'] = $db->diametro;
+					$prds[$k]['comprimento'] = $db->comprimento;
+					$prds[$k]['width'] = $db->largura;
+					$prds[$k]['height'] = $db->altura;
 					$prds[$k]['price'] = \Library\Currency::SystemValue($db->preco);
+
+					/**
+					 * Dimensões
+					 */
+					if($dim['weight']) {
+						$dim['weight'] = $db->peso + $dim['weight'];
+					}
+					if($dim['width']) {
+						$dim['width'] = $db->width + $dim['width'];
+					}
 				}
 			}
 
@@ -98,25 +121,83 @@ class Orders extends Model
 			/**
 			 * Update price from quantity
 			 */
-			foreach($prds as $k => $p) {
+			/*foreach($prds as $k => $p) {
 				$prds[$k]['total_price'] = \Library\Currency::SystemValue($p['total_price'] * $p['quantity']);
+			}*/
+
+			/**
+			 * Client Information
+			 */
+			$Credentials = Credentials::where('email', Credentials::getUser())
+				-> select([
+					'id'
+				])
+				-> get()
+				-> first();
+			$Client = $Credentials -> client()
+				-> get()
+				-> first();
+
+			if(!$Client) {
+				throw new \Exception('Client is not found.', 600);
+			} else {
+				$Phone = $Client->phones()->where('principal', 1)->get()->first();
+				$cli=[
+					'name' => $Client->nome,
+					'email' => Credentials::getUser(),
+					'areacode' => $Phone->ddd,
+					'phone' => $Phone->telefone,
+					'cpf' => $Client->cpf
+				];
 			}
 
-			/** Return total of order */
-			$total=0;
-			foreach($prds as $k=>$p) {
-				$total = $p['total_price']+$total;
+			/**
+			 * Shipping information
+			 */
+			if(isset($orders['shipping']) && $orders['shipping']['type'] && $orders['shipping']['code'] && $orders['shipping']['address']) {
+				$address = $Client
+					-> addresses()
+					-> where('id',$orders['shipping']['address'])
+					-> get()
+					-> first();
+
+				var_dump($dim);
+
+				$ship=[
+					'type' => $orders['shipping']['type'],
+					'code' => $orders['shipping']['code'],
+					'price' => 14.00,
+					'address' => [
+						'cep' => $address->cep,
+						'street' => $address->logradouro,
+						'number' => $address->numero,
+						'complement' => $address->complemento,
+						'city' => $address->cidade,
+						'state' => $address->estado,
+						'country' => 'BRA'
+					]
+				];
+			} else {
+				throw new \Exception('Shipping is required.', 600);
 			}
 
+			// Redirect URL
 			$orders=[
 				'total_price' => $total,
-				'products' => $prds
+				'products' => $prds,
+				'shipping' => $ship,
+				'client' => $cli,
+				'redirect_url' => $orders['redirect_url']
 			];
 
-			var_dump($orders);
+			$this->orders = $orders;
 
-			return $orders;
+			return true;
 		}
 		return false;
+	}
+
+	public function getOrders() {
+		return $this->orders;
 	}
 }
