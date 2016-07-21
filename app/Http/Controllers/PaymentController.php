@@ -17,6 +17,18 @@ class PaymentController extends Controller
 		    $PayRequest = new \PagSeguroPaymentRequest();
 
 		    $orders = $Orders->getOrders();
+		    try {
+			    Orders::CreateOrder($orders);
+		    } catch (\Exception $e) {
+			    return \Response::json([
+				    'response' => [
+					    'status' => 603,
+					    'error' => [
+						    'message' => $e->getMessage()
+					    ]
+				    ]
+			    ],200);
+		    }
 
 		    foreach($orders['products'] as $p) {
 			    $PayRequest->addItem($p['code'], $p['name'], $p['quantity'], $p['total_price']);
@@ -55,15 +67,14 @@ class PaymentController extends Controller
 
 		    // Envia a requisição
 		    try {
-			    /*$credentials = \PagSeguroConfig::getAccountCredentials();
-			    $checkout = $PayRequest->register($credentials);*/
-			    $checkout = 'teste';
+			    $credentials = \PagSeguroConfig::getAccountCredentials();
+			    $checkout = $PayRequest->register($credentials);
+
 			    return \Response::json([
 				    'response' => [
-					    'status' => 603,
+					    'status' => 605,
 					    'data' => [
-						    'checkout_url' => $checkout,
-						    'orders' => $orders
+						    'checkout_url' => $checkout
 					    ]
 				    ]
 			    ],200);
