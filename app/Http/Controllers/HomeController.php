@@ -24,10 +24,16 @@ class HomeController extends Controller
 
 		$prds = [];
 		foreach($products as $p) {
+			$resumo='';
+			if(strlen($p->resumo) > 150){
+				$resumo = substr($p->resumo,0,150).'...';
+			} else {
+				$resumo = $p->resumo;
+			}
 			$prd['id'] = $p->id;
 			$prd['nome'] = $p->nome;
 			$prd['link'] = $p->url;
-			$prd['resumo'] = $p->resumo;
+			$prd['resumo'] = $resumo;
 
 			$price = number_format($p->preco, 2, ',','.');
 			$price_explode = explode(',',$price);

@@ -59,7 +59,7 @@ class PaymentController extends Controller
 			    $cli['cpf']
 		    );
 		    // Referência do pedido
-		    $PayRequest->setReference('8UR892');
+		    $PayRequest->setReference($orders['code']);
 		    // URL de Retorno
 		    $PayRequest->setRedirectURL($orders['redirect_url']);
 		    // País
@@ -73,6 +73,9 @@ class PaymentController extends Controller
 			    return \Response::json([
 				    'response' => [
 					    'status' => 605,
+					    'success' => [
+						    'message' => 'Successfully completed request.'
+					    ],
 					    'data' => [
 						    'checkout_url' => $checkout
 					    ]

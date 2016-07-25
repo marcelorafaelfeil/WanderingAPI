@@ -12,7 +12,7 @@ class OptionsController extends Controller
 {
     public function ofProduct($url) {
 	    $product = Products::where('url', '=', $url)
-	        -> select(['id','nome'])
+	        -> select(['id','nome', 'url', 'quantidade', 'organizar', 'multiplo', 'preco'])
 	        -> get();
 
 	    if($product->count() > 0) {
@@ -20,12 +20,33 @@ class OptionsController extends Controller
 
 		    $json=[];
 
+		    $json['id'] = $product->id;
 		    $json['name'] = $product->nome;
+		    $json['url'] = $product->url;
+		    $json['limit'] = $product->quantidade;
+		    $json['organize'] = $product->organizar;
+		    $json['multiple'] = $product->multiplo;
+		    $json['style'] = $product->style->chave;
+		    if($product->images()->first()) {
+			    $json['image'] = $product->images()->orderBy('destaque','DESC')->first()->src;
+		    }
 
-		    if($product->options()) {
+		    if($product->options()->first()) {
+			    $option = $product->options()->first();
 			    $json['options']=[];
-
-			    foreach($product->options()->get()->all() as $o) {
+			    foreach($option->values()->orderBy('id', 'asc')->get()->all() as $v) {
+				    $val=array(
+					    'id' => $v->id,
+					    'description' => $v->descricao,
+					    'image' => $v->image->src,
+					    'price' => [
+						    'human' => number_format($v->preco,2,',','.'),
+						    'system' => $v->preco
+					    ]
+				    );
+				    array_push($json['options'], $val);
+			    }
+			    /*foreach($product->options()->get()->all() as $o) {
 				    $opt = array(
 					    'name' => $o->nome,
 					    'values' => []
@@ -49,7 +70,12 @@ class OptionsController extends Controller
 				    }
 
 				    array_push($json['options'],$opt);
-			    }
+			    }*/
+		    } else {
+			    $json['price']= [
+				    'system' => \Library\Currency::SystemValue($product->preco),
+				    'human' => \Library\Currency::HumanValue($product->preco)
+			    ];
 		    }
 
 		    return \Response::json([

@@ -11,8 +11,6 @@
 |
 */
 
-//header('Access-Control-Allow-Origin: http://localhost:3000');
-
 Route::group(['prefix' => 'api'], function(){
 	Route::get('home', 'HomeController@home');
 	Route::get('menu', 'MenuController@menu');

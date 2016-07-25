@@ -10,7 +10,7 @@ use App\Http\Requests;
 class ProductsController extends Controller
 {
 	public function details($url) {
-		$product = Products::select(['id', 'nome', 'resumo', 'preco'])
+		$product = Products::select(['id', 'nome', 'url', 'resumo', 'detalhes', 'preco'])
 			-> where('url', '=', $url)
 			-> get();
 
@@ -18,9 +18,10 @@ class ProductsController extends Controller
 			$json=[];
 			$product = $product->first();
 
-			$json['titulo'] = $product->titulo;
+			$json['titulo'] = $product->nome;
 			$json['resumo'] = $product->resumo;
-			$json['descricao_pequena'] = $product->descricao;
+			$json['url'] = $product->url;
+			$json['detalhes'] = $product->detalhes;
 
 			$preco = number_format($product->preco, 2, ',','.');
 			$p = explode(',',$preco);
