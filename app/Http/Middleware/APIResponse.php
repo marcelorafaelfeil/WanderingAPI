@@ -15,7 +15,6 @@ class APIResponse
      */
     public function handle($request, Closure $next)
     {
-
         // ALLOW OPTIONS METHOD
         $headers = [
             'Access-Control-Allow-Origin' => 'http://localhost:3000',
