@@ -36,10 +36,10 @@ class AuthController extends Controller
 	}
 
     public function validation(Request $request) {
-	    if($request->input('_token')) {
-		    if ($request->input('email') && $request->input('pass')) {
+	    if($request->json('_token')) {
+		    if ($request->json('email') && $request->json('pass')) {
 			    $credentials = Credentials::select('id')
-				    ->where('email', '=', $request->input('email'))
+				    ->where('email', '=', $request->json('email'))
 				    ->get();
 			    if ($credentials->count() > 0) {
 				    $credentials = $credentials->first();
@@ -50,7 +50,7 @@ class AuthController extends Controller
 					    ->get();
 
 				    if ($password->count() > 0) {
-					    if (\Crypt::decrypt($password->first()->senha) == $request->input('pass')) {
+					    if (\Crypt::decrypt($password->first()->senha) == $request->json('pass')) {
 						    return \Response::json([
 							    'response' => [
 								    'status' => 305,
@@ -58,7 +58,7 @@ class AuthController extends Controller
 									    'message' => 'Credentials accepted.'
 								    ],
 								    'data' => [
-									    'access_token' => Credentials::generateJWT(['email' => $request->input('email')])
+									    'access_token' => Credentials::generateJWT(['email' => $request->json('email')])
 								    ]
 							    ]
 						    ], 200);
