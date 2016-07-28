@@ -13,6 +13,7 @@
 
 Route::group(['prefix' => 'api'], function(){
 	Route::get('home', 'HomeController@home');
+
 	Route::get('menu', 'MenuController@menu');
 	Route::get('product/{url}', 'ProductsController@details');
 	Route::get('option/{url}', 'OptionsController@ofProduct');
