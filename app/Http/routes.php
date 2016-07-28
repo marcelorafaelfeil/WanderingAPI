@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['prefix' => 'api'], function(){
+Route::group(['prefix' => 'v1'], function(){
 	Route::get('home', 'HomeController@home');
 
 	Route::get('menu', 'MenuController@menu');
