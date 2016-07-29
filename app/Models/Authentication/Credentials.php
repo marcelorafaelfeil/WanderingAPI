@@ -26,7 +26,7 @@ class Credentials extends Model
 		];
 		$Iat = new \DateTime();
 		$Exp = new \DateTime();
-		$Exp->modify('+1 hour');
+		$Exp->modify('+1 hours');
 		$payload = [
 			'iss' => env('APP_URL'),
 			'iat' => $Iat->getTimestamp(),
