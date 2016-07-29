@@ -18,6 +18,12 @@ Route::group(['prefix' => 'v1'], function(){
 	Route::get('product/{url}', 'ProductsController@details');
 	Route::get('option/{url}', 'OptionsController@ofProduct');
 
+    Route::group(['prefix' => 'correios'], function(){
+        Route::get('shipping', 'ShippingInfoController@ShippingCost');
+        Route::get('address', 'ShippingInfoController@AddressFromZipCode');
+        Route::get('tracking', 'ShippingInfoController@Tracking');
+    });
+
 	Route::group(['prefix' => 'authentication'], function() {
 		Route::get('', 'Authentication\AuthController@login');
 		Route::post('process', 'Authentication\AuthController@validation');
@@ -27,11 +33,6 @@ Route::group(['prefix' => 'v1'], function(){
 		Route::get('/', 'CheckoutController@index');
 	});
 
-	Route::group(['prefix' => 'correios'], function(){
-		Route::get('shipping', 'ShippingInfoController@ShippingCost');
-		Route::get('address', 'ShippingInfoController@AddressFromZipCode');
-		Route::get('tracking', 'ShippingInfoController@Tracking');
-	});
 
 	Route::group(['prefix' => 'payment'], function(){
 		Route::post('PagSeguro', 'PaymentController@PagSeguro');

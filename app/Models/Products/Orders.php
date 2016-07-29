@@ -13,6 +13,7 @@ class Orders extends Model
 	private $orders = [];
 
 	public static $STATUS_OPEN = 1;
+    public static $STATUS_CANCELED = 0;
 
 	protected $fillable = ['endereco_id', 'cliente_id', 'codigo', 'valor', 'frete', 'status', 'ativo'];
 
